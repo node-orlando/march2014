@@ -6,7 +6,8 @@
   "dependencies": {
     "bookshelf": "~0.6.8",
     "knex": "^0.5.8",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "pg": "~2.11.1"
   },
   "devDependencies": {},
   "scripts": {
