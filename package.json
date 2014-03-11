@@ -1,0 +1,17 @@
+{
+  "name": "NodeJsDatabases",
+  "version": "0.0.0",
+  "description": "",
+  "main": "bookshelf.js",
+  "dependencies": {
+    "bookshelf": "~0.6.8",
+    "knex": "^0.5.8",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD-2-Clause"
+}
