@@ -49,5 +49,5 @@ SET search_path TO "$user",public;
 
 INSERT INTO episodes (title, description) VALUES
   ('Winter is Coming', 'Introduces the setting and the main characters of the show.'),
-  ('The Kings Road', 'Stark and his daughters accompany the kings entourage to Kings Landing'),
-  ('Lord Snow', 'Jon Snow trains at The Wall');
+  ('The Kings Road', 'Stark and his daughters accompany the kings entourage to Kings Landing.'),
+  ('Lord Snow', 'Jon Snow trains at The Wall.');
