@@ -1,5 +1,3 @@
-// TODO: drop collection in order to start with blank slate.
-
 var EpisodeSchema = new global.Schema({
   id: global.Schema.ObjectId,
   title: String,
@@ -12,17 +10,24 @@ var Episode = db.model('Episode', EpisodeSchema);
 // mongoose induce it from the model name.
 
 // Add some dummy data.
-Episode.create([
-  {
-    title: 'Winter is Coming, yo!',
-    description: 'For realz.'
-  },
-  {
-    title: 'Lord Snow',
-    description: 'Knows nothing.'
-  }
-], function (err, records) {
-  console.log('Saved: ' + records);
-});
+Episode.remove(function () {
+
+  console.log('Dropped collection\n');
+
+  Episode.create([
+    {
+      title: 'Winter is Coming, yo!',
+      description: 'For realz.'
+    },
+    {
+      title: 'Lord Snow',
+      description: 'Knows nothing.'
+    }
+  ], function () {
+    console.log('Created episodes\n');
+  });
+
+})
+
 
 module.exports = Episode;
