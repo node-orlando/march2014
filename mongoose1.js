@@ -5,9 +5,9 @@ var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
 var EpisodeSchema = new Schema({
-    id:  ObjectId,
-    title: String,
-    description: String
+  id: ObjectId,
+  title: String,
+  description: String
 });
 
 var Episode = mongoose.model('Episode', EpisodeSchema);
