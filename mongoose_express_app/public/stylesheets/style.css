@@ -1,28 +1,30 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 15px;
+  font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+input {
+  font-size: 20px;
 }
 
 a {
   color: #00B7FF;
 }
 
-* {
- padding:0;
-  margin:0
-}
-dl {
- width:100%;
- overflow:hidden;
- background:#ff0;
-}
 dt {
- float:left;
- width:50%; /* adjust the width; make sure the total of both is 100% */
- background:#cc0;
+  font-weight: bold;
+  margin-top: 25px;
 }
+
+dt a {
+  padding: 5px;
+  font-size: 0.7em;
+}
+
 dd {
- float:left;
- width:50%; /* adjust the width; make sure the total of both is 100% */
- background:#dd0
+  padding: 5px;
+}
+
+legend {
+  font-size: 0.6em;
 }

@@ -1,9 +1,19 @@
 extends layout
 
 block content
+  h1
+    | Game of Thrones Episodes
+  p
+    a(href='/episodes/new') New Episode
   section.episodes
     dl
       - for episode in episodes
-        dt= episode.title
+        dt
+          = episode.title
+          a(href='/episodes/#{episode._id}/edit') edit
+          a(href='/episodes/#{episode._id}?_method=DELETE'
+            onclick='if(!confirm("Are you sure?")) return false;') destroy
+        dd
+          legend= episode.description
         - for character in episode.characters
           dd #{character.name} from <i>House #{character.house}</i>

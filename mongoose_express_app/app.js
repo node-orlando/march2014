@@ -23,6 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(require('connect-method-override-get')('_method'));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -33,7 +34,13 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+
 app.get('/episodes', episode.list);
+app.get('/episodes/new', episode.new);
+app.post('/episodes', episode.create);
+app.get('/episodes/:id/edit', episode.edit);
+app.patch('/episodes/:id', episode.update);
+app.del('/episodes/:id', episode.destroy);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -1,5 +1,4 @@
 var EpisodeSchema = new global.Schema({
-  id: global.Schema.ObjectId,
   title: String,
   description: String,
   characters: [{ name: String, house: String }]

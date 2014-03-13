@@ -39,8 +39,9 @@ Episode.remove(function () {
         }
       ]
     }
-  ], function () {
+  ], function (err, lastEpisode) {
     console.log('Created episodes\n');
+    console.log(lastEpisode);
     global.db.close();
   });
 
