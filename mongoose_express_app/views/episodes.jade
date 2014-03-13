@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  section.episodes
+    dl
+      - for episode in episodes
+        dt= episode.title
+        - for character in episode.characters
+          dd #{character.name} from <i>House #{character.house}</i>

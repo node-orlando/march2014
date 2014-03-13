@@ -6,6 +6,6 @@ var Episode = require('./../models/episode')
 
 exports.list = function(req, res){
   Episode.find(function (err, episodes) {
-    return res.send(episodes);
+    return res.render('episodes', { episodes: episodes });
   });
 };
