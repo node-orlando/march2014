@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  section.episode
+    form(action='/episodes/' method='POST')
+      p
+        label Title
+      p
+        input(name='episode[title]')
+      p
+        label Description
+      p
+        input(name='episode[description]')
+      p
+        input(type='submit' value='Create')

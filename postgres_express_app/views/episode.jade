@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  section.episode
+    form(action='/episodes/#{episode.id}' method='POST')
+      p
+        label Title
+      p
+        input(name='episode[title]' value="#{episode.get('title')}")
+      p
+        label Description
+      p
+        input(name='episode[description]' value="#{episode.get('description')}")
+      p
+        input(type='hidden' name='_method' value='PATCH')
+        input(type='submit' value='Update')
