@@ -50,4 +50,42 @@ SET search_path TO "$user",public;
 INSERT INTO episodes (title, description) VALUES
   ('Winter is Coming', 'Introduces the setting and the main characters of the show.'),
   ('The Kings Road', 'Stark and his daughters accompany the kings entourage to Kings Landing.'),
-  ('Lord Snow', 'Jon Snow trains at The Wall.');
+  ('Lord Snow', 'Jon Snow trains at The Wall.'),
+  ('The Rains of Castamere', 'The Red Wedding...');
+
+
+---
+DROP TABLE IF EXISTS comments;
+CREATE TABLE comments (
+    id integer NOT NULL,
+    episode_id integer NOT NULL,
+    description text
+);
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+INSERT INTO comments (episode_id, description) VALUES
+  (1, 'I might want to watch this show'),
+  (1, 'Off to a good start'),
+  (2, 'Kings landing looks interesting...'),
+  (2, 'Is this king ever sober ?'),
+  (3, 'Jon is gonna have a bad time'),
+  (4, 'I HATE YOU GEORGE MARTIN'),
+  (4, 'Thats it. I AM DONE');

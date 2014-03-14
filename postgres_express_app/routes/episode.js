@@ -1,4 +1,4 @@
-var Episode = require('./../models/episode');
+var Episode = require('./../models').Episode;
 
 /*
  * GET episodes listing.
@@ -6,13 +6,13 @@ var Episode = require('./../models/episode');
 
 exports.list = function(req, res){
   var episodes = Episode.collection().query('orderBy', 'id', 'ASC');
-  episodes.fetch().then(function(result){
-    return res.render('episodes', { episodes: result.models });
+  episodes.fetch({ withRelated: 'comments' }).then(function(result){
+    return res.render('episodes', { episodes: result.toJSON() });
   });
 };
 
 exports.new = function (req, res) {
-  return res.render('new')
+  return res.render('new');
 }
 
 exports.create = function (req, res) {
@@ -23,7 +23,7 @@ exports.create = function (req, res) {
 }
 
 exports.edit = function (req, res) {
-  var episode = new Episode({ id: req.params.id })
+  var episode = new Episode({ id: req.params.id });
   episode.fetch().then(function (episode) {
     return res.render('episode', { episode: episode });
   })

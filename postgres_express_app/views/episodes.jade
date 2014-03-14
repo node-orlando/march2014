@@ -5,13 +5,20 @@ block content
     | Game of Thrones Episodes
   p
     a(href='/episodes/new') New Episode
+
   section.episodes
     dl
       - for episode in episodes
-        dt
-          = episode.get('title')
+        dt.title
+          = episode.title
           a(href='/episodes/#{episode.id}/edit') edit
           a(href='/episodes/#{episode.id}?_method=DELETE'
             onclick='if(!confirm("Are you sure?")) return false;') destroy
-        dd
-          legend= episode.get('description')
+
+        dd.description
+          = episode.description
+        dd.comments
+          ul
+          - for comment in episode.comments
+            li.comment
+              = comment.description
