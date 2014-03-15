@@ -1,6 +1,6 @@
 var pg = require("pg");
 var settings = "pg://localhost:5432/node_episodes";
-var db = {};
+var db = {}
 
 db.query = function (queryString, args, cb) {
   pg.connect(settings, function (err, client, done) {
