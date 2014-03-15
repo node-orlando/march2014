@@ -1,7 +1,4 @@
-/**
- * Module dependencies.
- */
-
+// app.js
 var Bookshelf = require('bookshelf');
 Bookshelf.PG = Bookshelf.initialize({
   client: 'pg',

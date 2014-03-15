@@ -1,7 +1,6 @@
+// models/index.js
 var Bookshelf = require('bookshelf').PG;
-/*
- * Persistency Layer
-*/
+
 var Episode = Bookshelf.Model.extend({
   tableName: 'episodes',
 
