@@ -14,7 +14,7 @@ var query = client.query('SELECT * FROM episodes');
 // passed to a rows property in the end event’s result object. If we did not call
 // the result.addRow() method, the rows array would be empty in the end event.
 query.on('row', function (row, result) {
-    result.addRow(row);
+  result.addRow(row);
 });
 
 // The end event is dispatched when all rows have been returned by the query or
@@ -23,7 +23,7 @@ query.on('row', function (row, result) {
 // the console and then closing the client’s connection using the end() method
 // on the Client object.
 query.on('end', function (result) {
-    console.log('Results: ' + result.rowCount);
-    console.log(JSON.stringify(result.rows, null, '    '));
-    client.end();
+  client.end()
+  console.log('Results: ' + result.rowCount);
+  console.log(JSON.stringify(result.rows, null, '    '));
 });

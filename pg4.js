@@ -3,7 +3,11 @@ var settings = 'pg://localhost:5432/node_episodes';
 
 function runQuery(queryString, args, cb){
   pg.connect(settings, function (err, client, done) {
+    if(err) throw err;
+
     client.query(queryString, args, function (err, result) {
+      if(err) throw err;
+
       cb(result.rows);
       done('ok');
     })
