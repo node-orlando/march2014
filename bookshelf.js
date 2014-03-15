@@ -13,6 +13,7 @@ console.log('\n');
 // and many-to-many relations.
 
 // It is designed to work well with PostgreSQL, MySQL, and SQLite3.
+// When the app starts
 var Bookshelf = require('bookshelf'),
     _ = require('underscore');
 
@@ -25,8 +26,8 @@ Bookshelf.PG = Bookshelf.initialize({
   }
 });
 
-
-var Bookshelf = Bookshelf.PG;
+// elsewhere, to use the client
+var Bookshelf = require('bookshelf').PG;
 
 //https://github.com/tgriesser/bookshelf/blob/master/test/integration/collection.js
 
@@ -54,7 +55,10 @@ var episode = new Episode({
 
 episode.save().then(function(m){
   console.log(m);
-})*/
+})
+
+
+*/
 
 function printTitle(episodes){
   return _.map(episodes, function(episode){
@@ -62,29 +66,25 @@ function printTitle(episodes){
   });
 }
 
-var Episodes = Bookshelf.Collection.extend({tableName: 'episodes'});
-Episodes.forge().reset({});
+var Episodes = Bookshelf.Collection.extend({
+  tableName: 'episodes'
+});
+
 Episodes.forge().fetch().then(function(result){
-  printTitle(result.models);
-  console.log('\n')
+  console.log(result.models);
 });
 
 var Episode = Bookshelf.Model.extend({
   tableName: 'episodes'
 });
 
-var postsCollection = Bookshelf.Collection.forge([], { model: Episode });
-postsCollection.fetch().then(function(result){
-  printTitle(result.models);
-  console.log('\n')
+var episodes = Bookshelf.Collection.forge([],
+  { model: Episode });
+episodes.fetch().then(function(result){
+  console.log(result.models);
 });
 
-//The query method is used to tap into the underlying Knex query builder
-//instance for the current collection.
-var postsCollection = Bookshelf.Collection.forge([], { model: Episode });
-postsCollection.query('where', {title: 'Pilot'})
-  .fetch().then(function(result){
-    console.log('With Query:')
-    printTitle(result.models);
-    console.log('\n')
+var episodes = Episode.collection();
+episodes.fetch().then(function(result){
+  console.log(result.models);
 });
