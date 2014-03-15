@@ -5,10 +5,9 @@ var Episode = require('./../models').Episode;
  */
 
 exports.list = function(req, res){
-  var episodes = Episode.collection().query('orderBy', 'id', 'ASC');
-  episodes.fetch({ withRelated: 'comments' }).then(function(result){
-    return res.render('episodes', { episodes: result.toJSON() });
-  });
+  Episode.findAll(req.param('keyword'), function (episodes) {
+    return res.render('episodes', { episodes: episodes });
+  })
 };
 
 exports.new = function (req, res) {
