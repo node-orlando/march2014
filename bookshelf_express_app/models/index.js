@@ -1,7 +1,8 @@
+var Bookshelf = require('bookshelf').PG;
 /*
  * Persistency Layer
 */
-var Episode = global.db.Model.extend({
+var Episode = Bookshelf.Model.extend({
   tableName: 'episodes',
 
   comments: function () {
@@ -26,7 +27,7 @@ var Episode = global.db.Model.extend({
   }
 });
 
-var Comment = global.db.Model.extend({
+var Comment = Bookshelf.Model.extend({
   tableName: 'comments'
 });
 

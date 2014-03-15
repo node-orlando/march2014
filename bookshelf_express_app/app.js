@@ -3,7 +3,7 @@
  */
 
 var Bookshelf = require('bookshelf');
-global.db = Bookshelf.initialize({
+Bookshelf.PG = Bookshelf.initialize({
   client: 'pg',
   connection: {
     database: 'node_episodes'
