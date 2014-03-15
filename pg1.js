@@ -8,14 +8,14 @@ pg.connect(settings, function (err, client, done) {
     console.log('Results: ' + result.rowCount);
     console.log(result.rows);
     done('ok');
-  })
+  });
 });
 
 
 // 'lil better
 pg.connect(settings, function (err, client, done) {
 
-  query = client.query('SELECT * FROM episodes')
+  query = client.query('SELECT * FROM episodes');
 
   query.on('row', function (row, result) {
     result.addRow(row);
