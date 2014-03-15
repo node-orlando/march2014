@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1
+    | Game of Thrones Episodes
+  p
+    form
+      input(type='text' name='keyword')
+      input(type='submit' value='Search')
+
+  section.episodes
+    dl
+      - for episode in episodes
+        dt.title
+          = episode.title
+
+        dd.description
+          = episode.description

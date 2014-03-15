@@ -1,0 +1,14 @@
+{
+  "name": "postgres_express_app",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "jade": "*",
+    "connect-method-override-get": "~1.0.0",
+    "pg": "~2.11.1"
+  }
+}
