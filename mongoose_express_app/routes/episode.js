@@ -1,8 +1,5 @@
+// routes/episode.js
 var Episode = require('./../models').Episode
-
-/*
- * GET episodes listing.
- */
 
 exports.list = function(req, res){
   Episode.findAll(req.param('keyword'), function (err, episodes) {
