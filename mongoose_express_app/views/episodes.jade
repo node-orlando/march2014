@@ -14,6 +14,8 @@ block content
           a(href='/episodes/#{episode._id}?_method=DELETE'
             onclick='if(!confirm("Are you sure?")) return false;') destroy
         dd
-          legend= episode.description
-        - for character in episode.characters
-          dd #{character.name} from <i>House #{character.house}</i>
+          p= episode.description
+          p.legend Comments
+          ul
+          - for comment in episode.comments
+            li #{comment.description} - #{comment.rating}/5

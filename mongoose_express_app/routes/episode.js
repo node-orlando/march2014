@@ -1,4 +1,4 @@
-var Episode = require('./../models/episode')
+var Episode = require('./../models').Episode
 
 /*
  * GET episodes listing.

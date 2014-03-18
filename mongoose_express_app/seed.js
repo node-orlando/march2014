@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
-global.db = mongoose.
+mongoose.DB = mongoose.
   createConnection('mongodb://localhost:27017/node_episodes_mongoose_express');
-global.Schema = mongoose.Schema;
 
-
-var Episode = require('./models/episode')
+var Models = require('./models'),
+    Episode = Models.Episode;
 
 Episode.remove(function () {
 
@@ -14,35 +13,36 @@ Episode.remove(function () {
     {
       title: 'Winter is Coming, yo!',
       description: 'For realz.',
-      characters: [
+      comments: [
         {
-          name: 'Eddard Stark',
-          house: 'Stark'
+          description: 'Winter looks cold.',
+          rating: '5'
         },
         {
-          name: 'Cersei Lannister',
-          house: 'Lannister'
+          description: 'These White Walkers are scary.',
+          rating: '5'
         }
       ]
     },
     {
       title: 'Lord Snow',
       description: 'Knows nothing.',
-      characters: [
+      comments: [
         {
-          name: 'Jon Snow',
-          house: 'Stark'
+          description: 'Jon Snow does not know a thang.',
+          rating: '2'
         },
         {
-          name: 'Daenerys Targaryen',
-          house: 'Targaryen'
+          description: 'No dragons yet ?',
+          rating: '1'
         }
       ]
     }
   ], function (err, lastEpisode) {
-    console.log('Created episodes\n');
-    console.log(lastEpisode);
-    global.db.close();
+    var commentId = lastEpisode.comments[0]['_id'];
+    console.log(commentId);
+    console.log(lastEpisode.comments.id(commentId));
+    mongoose.DB.close();
   });
 
 });

@@ -1,10 +1,11 @@
 /**
  * Module dependencies.
  */
+
 var mongoose = require('mongoose');
-global.db = mongoose.
-  createConnection('mongodb://localhost:27017/node_episodes_mongoose_express');
-global.Schema = mongoose.Schema;
+var connectionString = 'mongodb://localhost:27017/node_episodes_mongoose_express';
+mongoose.DB = mongoose.createConnection(connectionString);
+
 
 var express = require('express');
 var routes = require('./routes');
