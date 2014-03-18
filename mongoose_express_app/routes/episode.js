@@ -5,7 +5,8 @@ var Episode = require('./../models').Episode
  */
 
 exports.list = function(req, res){
-  Episode.find(function (err, episodes) {
+  Episode.findAll(req.param('keyword'), function (err, episodes) {
+    if(err) throw err;
     return res.render('episodes', { episodes: episodes });
   });
 };

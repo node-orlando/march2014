@@ -4,6 +4,10 @@ block content
   h1
     | Game of Thrones Episodes
   p
+    form
+      input(type='text' name='keyword')
+      input(type='button' value='Search')
+  p
     a(href='/episodes/new') New Episode
   section.episodes
     dl

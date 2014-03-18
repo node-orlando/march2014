@@ -9,6 +9,18 @@ var EpisodeSchema = mongoose.Schema({
   }]
 });
 
+EpisodeSchema.static('findAll', function(keyword, callback) {
+
+  if(keyword){
+    var match = new RegExp(keyword, 'i');
+    return this.find({
+        $or: [{ title: match}, { description: match }]
+      }).exec(callback);
+  }else{
+    return this.find().exec(callback);
+  }
+});
+
 // http://mongoosejs.com/docs/api.html#index_Mongoose-model
 var Episode = mongoose.DB.model('Episode', EpisodeSchema);
 // use optional third argument to specifcy collection name, instead of having
