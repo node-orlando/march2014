@@ -1,4 +1,4 @@
-var knex = require('knex').PG;
+var Knex = require('knex').PG;
 
 var Episode = {
   findAll: function (keyword, cb) {
@@ -10,13 +10,13 @@ var Episode = {
   },
 
   all: function (cb) {
-    knex('episodes').select().then(function(result) {
+    Knex('episodes').select().then(function(result) {
       return cb(result);
     });
   },
 
   filter: function (keyword, cb) {
-    knex('episodes').where('title', 'ILIKE', '%' + keyword + '%').select().
+    Knex('episodes').where('title', 'ILIKE', '%' + keyword + '%').select().
       then(function(result) {
         cb(result);
       });
