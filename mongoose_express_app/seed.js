@@ -1,18 +1,18 @@
-var mongoose = require('mongoose');
-mongoose.DB = mongoose.
-  createConnection('mongodb://localhost:27017/node_episodes_mongoose_express');
+var mongoose = require('mongoose'),
+    connectionString = 'mongodb://localhost:27017/node_episodes_mongoose_express';
+mongoose.DB = mongoose.createConnection(connectionString);
 
 var Models = require('./models'),
     Episode = Models.Episode;
 
 Episode.remove(function () {
 
-  console.log('Dropped collection\n');
+  console.log('\nDropped collection\n');
 
   Episode.create([
     {
-      title: 'Winter is Coming, yo!',
-      description: 'For realz.',
+      title: 'Winter is Coming',
+      description: 'Introduces the setting and the main characters of the show.',
       comments: [
         {
           description: 'Winter looks cold.',
@@ -26,7 +26,7 @@ Episode.remove(function () {
     },
     {
       title: 'Lord Snow',
-      description: 'Knows nothing.',
+      description: 'Jon Snow trains at The Wall.',
       comments: [
         {
           description: 'Jon Snow does not know a thang.',
@@ -37,11 +37,25 @@ Episode.remove(function () {
           rating: '1'
         }
       ]
+    },
+    {
+      title: 'The Rains of Castamere',
+      description: 'The Red Wedding',
+      comments: [
+        {
+          description: 'O. MY. GAWD.',
+          rating: 5
+        },
+        {
+          description: 'Best show EVER',
+          rating: 5
+        }
+      ]
     }
   ], function (err, lastEpisode) {
-    var commentId = lastEpisode.comments[0]['_id'];
-    console.log(commentId);
-    console.log(lastEpisode.comments.id(commentId));
+    if(err) throw err;
+
+    console.log('\nEpisodes created\n');
     mongoose.DB.close();
   });
 
