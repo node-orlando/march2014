@@ -1,3 +1,4 @@
+// client 1
 var redis = require('redis'),
     client = redis.createClient(),
     clientListener = redis.createClient();
@@ -9,7 +10,6 @@ client.sadd('characters', 'Eddard Stark');
 client.sadd('characters', 'Cersei Lannister');
 client.sadd('characters', 'Robert Baratheon');
 client.sadd('characters', 'Khal Drogo');
-
 client.sadd('characters', 'Jon Snow');
 client.sadd('characters', 'Littlefinger');
 
@@ -23,7 +23,7 @@ clientListener.on('message', function (channel, message) {
 
   var character = message;
   console.log(character + ' must die!');
-  client.srem('characters', character, function(err, size) {
+  client.srem('characters', character, function(err) {
     if(err) throw err;
 
     console.log(character + ' is now dead.');
